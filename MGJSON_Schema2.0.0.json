@@ -1,0 +1,539 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "JSON Schema for MGJSON(Motion Graphics JSON) defined by Adobe Systems Inc.",
+  "type": "object",
+
+  "_comment": "Adobe MGJSON format allows sensor data to be structured in hierarchical format. Data can be of two types: Static data which does not change with time and Dynamic data which changes with time. Group can be used to represent any logical grouping of Static and Dynamic data. MGJSON format is mainly divided into 6 JSON objects : \"version\" - must be the first property in the top level JSON object with value equal to \"MGJSON2.0.0\". This indicates that MGJSON file conforms to the schema describe in this file. \"creator\" - Optional property. \"dynamicSamplesPresentB\" - mandatory property, if set to true indicates that MGJSON contains dynamic samples. If false, only static data should be present.\"dynamicDataInfo\" - this property must be present if and only if \"dynamicSamplesPresentB\" is true. Properties of MGJSON which is required for dynamic sample data like \"useTimecodeB\", \"timecodeInfo\" must be present. \"dataOutline\" - mandatory property, represents the collection of data which can be present in static, dynamic or group format. \"dataDynamicSamples\" - represents dynamic data samples associated with Dynamic data present in \"dataOutline\". This need not to be always present, MGJSON can contain only static data",
+
+  "properties": {
+    "version": {
+      "description": "MGJSON(Motion Graphics JSON) schema version - current:2.0.0, value of the key must be equals to \"MGJSON2.0.0\". This string is not case sensitive so \"MGJSON2.0.0\" or \"mgjson2.0.0\" is acceptable. Other cases like \"mgjson2.0\" or \"MGJSON 2\" are not acceptable. Property is mandatory.",
+      "type": "string"
+    },
+    "creator": {
+      "description": "An entity primarily responsible for making the resource. Property is not mandatory.",
+      "type": "string"
+    },
+
+    "dataOutline": {
+      "description": "dataOutline will hold information about data node in hierarchical manner. Property is mandatory.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/dataGroupChild"
+      }
+    },
+
+    "dynamicSamplesPresentB": {
+      "description": "indicates that whether MGJSON file contains any dynamic data samples or only static data. dynamicSamplesPresentB must be set to true if MGJSON file contains dynamic data, false otherwise. If dynamicSamplesPresentB is set to true, \"dynamicDataInfo\" must be present otherwise it shall not be present in MGJSON file. Property is mandatory. This property must be present before \"dynamicDataInfo\".",
+      "type": "boolean"
+    },
+
+    "dynamicDataInfo": {
+      "description": "represents the information related to dynamic data samples. It is a collection of properties which indicates about time format used in samples to represent sample time and video sync information. Property is mandatory only if \"dynamicSamplesPresentB\" is set to true and must be present after \"dynamicSamplesPresentB\" and before \"dataDynamicSamples\".",
+      "type": "object",
+      "properties": {
+        "useTimecodeB": {
+          "description": "if true, dynamic sample time strings are formatted as SMPTE format HH:MM:SS:FF else as UTC format YYYY-MM-DDTHH:MM:SS.ssssTZD where TZD is time zone designator (Z or +hh:mm or -hh:mm) and ssss is zero or more digits representing a decimal fraction of a second. Property is mandatory. \"timecodeInfo\" must be present if value is set to true otherwise \"utcInfo\" must be present",
+          "type": "boolean"
+        },
+        "timecodeInfo": {
+          "description": "represents the SMPTE timecode related information i.e. frame rate and whether timecode is drop frame or non-drop frame. Property is not mandatory. It must be present if \"useTimecodeB\" is set to true.",
+          "$ref": "#/definitions/timecodeInfo"
+        },
+        "utcInfo": {
+          "description": "represents the UTC time related information i.e. whether utc time contains timezone and precision length. Property is not mandatory. It must be present if \"useTimecodeB\" is set to false.",
+          "$ref": "#/definitions/utcInfo"
+        },
+        "videoSyncTimeList": {
+          "type": "array",
+          "minItems": 1,
+          "description": "represents the list of sync time structures. Property is not mandatory.",
+          "items": {
+            "$ref": "#/definitions/syncTime"
+          }
+        }
+      },
+      "required": ["useTimecodeB"],
+
+      "additionalProperties": false
+    },
+
+    "dataDynamicSamples": {
+      "description": "represents the list of dynamic samples data set present in the file. Each dynamic sample data set must have one entry of \"dynamicData\" in \"dataOutline\" whose \"sampleId\" matches with the \"sampleSetID\" of \"dataDynamicSampleSet\". This property is not mandatory but must be present if \"dynamicSamplesPresentB\" is set to true.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/dataDynamicSampleSet"
+      }
+    }
+  },
+  "required": ["version", "dynamicSamplesPresentB", "dataOutline"],
+
+  "additionalProperties": false,
+
+  "definitions": {
+    "timecodeInfo": {
+      "description": "must be present if useTimecodeB is true.",
+      "type": "object",
+      "properties": {
+        "dropFrame": {
+          "type": "boolean"
+        },
+        "frameRate": {
+          "description": "it defines frameRate",
+          "$ref": "#/definitions/frameRate"
+        }
+      },
+      "required": ["dropFrame", "frameRate"],
+      "additionalProperties": false
+    },
+    "utcInfo": {
+      "description": "must be present if useTimecodeB is false.",
+      "type": "object",
+      "properties": {
+        "precisionLength": {
+          "description": "number of digits representing a decimal fraction of a second in UTC time.",
+          "type": "number"
+        },
+        "isGMT": {
+          "description": "if true, time string does not contain time zone info (e.g.: YYYY-MM-DDTHH:MM:SS.ssssZ).",
+          "type": "boolean"
+        }
+      }
+    },
+    "syncTime": {
+      "type": "object",
+      "description": "one of the frameNumber or timeString must be present",
+      "properties": {
+        "timeString": {
+          "type": "string"
+        },
+        "frameNumber": {
+          "type": "number"
+        },
+        "fileName": {
+          "type": "string"
+        }
+      },
+      "required": ["fileName"],
+      "additionalProperties": false
+    },
+    "frameRate": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "scale": {
+          "type": "number"
+        }
+      },
+      "required": ["value", "scale"],
+      "additionalProperties": false
+    },
+
+    "paddedString": {
+      "type": "object",
+      "properties": {
+        "length": {
+          "description": "length of the actual string without padding. If the number of digits used to represent this property is less than \"maxDigitsInStrLength\", then it must be padded with '0' before the value ",
+          "type": "numberString"
+        },
+        "str": {
+          "description": "string must be padded with space (' ') to maxLen specified by \"numberStringProperties\" after the value.",
+          "type": "string"
+        }
+      },
+      "required": ["length", "str"],
+      "additionalProperties": false
+    },
+
+    "numberString": {
+      "description": "numberString will contain number represented as string.",
+      "type": "string"
+    },
+
+    "numberStringArray": {
+      "description": "numberStringArray will contain elements represented as numberString. Only up-to three dimensional data is supported.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "numberString"
+      }
+    },
+
+    "numberArray": {
+      "description": "numberArray will contain elements represented as number. Only up-to three dimensional data is supported.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "number"
+      }
+    },
+
+    "stringArray": {
+      "description": "array of strings",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "numberMinMax": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        }
+      },
+      "required": ["min", "max"],
+      "additionalProperties": false
+    },
+    "numberRange": {
+      "description": "value extremes (legal and occurring in sampleSet) of a number",
+      "type": "object",
+      "properties": {
+        "occuring": {
+          "description": "indicates extremes of values occurring in a sample set",
+          "$ref": "#/definitions/numberMinMax"
+        },
+        "legal": {
+          "description": "indicates legal extremes for component values",
+          "$ref": "#/definitions/numberMinMax"
+        }
+      },
+      "required": ["occuring", "legal"],
+      "additionalProperties": false
+    },
+    "numberArrayRange": {
+      "description": " ranges for all elements of numberArray and numberStringArray type",
+      "type": "object",
+      "properties": {
+        "ranges": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/definitions/numberRange"
+          }
+        }
+      },
+      "required": ["ranges"],
+      "additionalProperties": false
+    },
+    "numberPattern": {
+      "description": "specifies number of digits in a number",
+      "type": "object",
+      "properties": {
+        "isSigned": {
+          "description": "set to true if sign (+/-) is prefixed in number, otherwise false.",
+          "type": "boolean"
+        },
+        "digitsInteger": {
+          "description": "number of digits before decimal",
+          "type": "number"
+        },
+        "digitsDecimal": {
+          "description": "number of digits after decimal",
+          "type": "number"
+        }
+      },
+      "required": ["digitsInteger", "digitsDecimal", "isSigned"],
+      "additionalProperties": false
+    },
+    "numberArrayProperties": {
+      "description": "extra information for numberArray and numberStringArray type",
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "description": "defines pattern for all elements in the array",
+          "$ref": "#/definitions/numberPattern"
+        },
+        "arraySize": {
+          "description": "size of the array",
+          "type": "number"
+        },
+        "arrayDisplayNames": {
+          "description": "labels used for elements in the array",
+          "$ref": "#/definitions/stringArray"
+        },
+        "arrayRanges": {
+          "description": "range for each element in the array",
+          "$ref": "#/definitions/numberArrayRange"
+        },
+        "isPoint": {
+          "description": "indicates whether the numberArray or numberStringArray should be treated as a point (2D/3D).",
+          "type": "boolean"
+        }
+      },
+      "required": ["pattern", "arraySize", "arrayDisplayNames", "arrayRanges"],
+      "additionalProperties": false
+    },
+    "numberStringProperties": {
+      "description": "extra information for number and numberString type",
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "$ref": "#/definitions/numberPattern"
+        },
+        "range": {
+          "$ref": "#/definitions/numberRange"
+        }
+      },
+      "required": ["pattern", "range"],
+      "additionalProperties": false
+    },
+    "paddedStringProperties": {
+      "description": "extra information for paddedString type, maxLen represents maximum length of a padded string value, smaller strings must be padded to maxLen and maxDigitsInStrLength represents maximum number of digits required to write the \"length\" property of padded string, smaller \"length\" property must be padded to maxDigitsInStrLength",
+      "type": "object",
+      "properties": {
+        "maxLen": {
+          "type": "number"
+        },
+        "maxDigitsInStrLength": {
+          "type": "number"
+        },
+        "eventMarkerB": {
+          "description": "indicates that the string is an event marker (should not be interpreted as a keyframe)",
+          "type": "boolean"
+        }
+      },
+      "required": ["maxLen", "maxDigitsInStrLength", "eventMarkerB"],
+      "additionalProperties": false
+    },
+    "dynamicDataType": {
+      "description": "specifies data type for the dynamic data node.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["numberString", "paddedString", "numberStringArray"]
+        },
+        "numberArrayProperties": {
+          "description": "used for numberStringArray only, properties needed for numberStringArray datatype",
+          "$ref": "#/definitions/numberArrayProperties"
+        },
+        "numberStringProperties": {
+          "description": "used for numberString type only, properties needed for numberString datatype",
+          "$ref": "#/definitions/numberStringProperties"
+        },
+        "paddedStringProperties": {
+          "description": "used for paddedString type only, properties needed for paddedString datatype",
+          "$ref": "#/definitions/paddedStringProperties"
+        }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "interpolationType": {
+      "description": "value for paddedString dataType will always be hold.",
+      "type": "string",
+      "enum": ["linear", "hold"],
+      "additionalProperties": false
+    },
+    "dynamicDataValue": {
+      "description": "specifies data value for the dynamic data node. Its type can be one of numberString, paddedString or numberStringArray.",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/numberString"
+        },
+        {
+          "$ref": "#/definitions/paddedString"
+        },
+        {
+          "$ref": "#/definitions/numberStringArray"
+        }
+      ],
+      "additionalProperties": false
+    },
+    "staticDataType": {
+      "description": "specifies data type for the static data node. JSON object can be supported through \"dataGroup\". numberArray with greater than three elements can be supported through \"dataGroup\".",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["number", "string", "numberArray", "boolean"]
+        },
+        "numberArrayProperties": {
+          "description": "used for numberArray only, properties needed for numberArray data type",
+          "$ref": "#/definitions/numberArrayProperties"
+        },
+        "numberStringProperties": {
+          "description": "used for number type only, properties needed for number data type",
+          "$ref": "#/definitions/numberStringProperties"
+        },
+        "paddedStringProperties": {
+          "description": "used for string type only, properties needed for string data type",
+          "$ref": "#/definitions/paddedStringProperties"
+        }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+
+    "staticDataValue": {
+      "description": "specifies data value for the static data node. Its type can be one of number, string, boolean or numberArray.",
+      "oneOf": [
+        "string",
+        "number",
+        "boolean",
+        {
+          "$ref": "#/definitions/numberArray"
+        }
+      ],
+      "additionalProperties": false
+    },
+    "dataStatic": {
+      "type": "object",
+      "properties": {
+        "objectType": {
+          "enum": ["dataStatic"]
+        },
+        "matchName": {
+          "description": "unique identifier with ASCII, alphanumeric chars and no leading numerals",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "label used for stream",
+          "type": "string"
+        },
+        "dataType": {
+          "$ref": "#/definitions/staticDataType"
+        },
+        "value": {
+          "$ref": "#/definitions/staticDataValue"
+        }
+      },
+      "required": ["objectType", "displayName", "dataType", "value", "matchName"],
+      "additionalProperties": false
+    },
+    "dataDynamic": {
+      "type": "object",
+      "properties": {
+        "objectType": {
+          "enum": ["dataDynamic"]
+        },
+        "matchName": {
+          "description": "unique identifier with ASCII, alphanumeric chars and no leading numerals.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "label used for stream.",
+          "type": "string"
+        },
+        "sampleSetID": {
+          "description": "unique identifier for a sample set. It must match \"sampleSetID\" in associated \"dataDynamicSampleSet\".",
+          "type": "string"
+        },
+        "dataType": {
+          "$ref": "#/definitions/dyamicDataType"
+        },
+        "interpolation": {
+          "$ref": "#/definitions/interpolationType"
+        },
+        "hasExpectedFrequecyB": {
+          "description": "true means minimum rate of samples is expected",
+          "type": "boolean"
+        },
+        "expectedMaxInterSampleDuration": {
+          "description": "maximum expected duration allowed between adjacent samples. If \"useTimecodeB\" is true, the format of the value must be HH:MM:SS:FF else YYYY-MM-DDTHH:MM:SS.ssssTZD. For more details on time format, refer \"dynamicDataInfo\"",
+          "type": "string"
+        },
+        "sampleCount": {
+          "description": "number of samples associated \"dataDynamicSampleSet\".",
+          "type": "number"
+        }
+      },
+      "required": [
+        "objectType",
+        "displayName",
+        "sampleSetID",
+        "dataType",
+        "interpolation",
+        "hasExpectedFrequecyB",
+        "sampleCount",
+        "matchName"
+      ],
+      "additionalProperties": false
+    },
+    "dataGroupChild": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/dataGroup"
+        },
+        {
+          "$ref": "#/definitions/dataDynamic"
+        },
+        {
+          "$ref": "#/definitions/dataStatic"
+        }
+      ],
+      "additionalProperties": false
+    },
+    "dataGroup": {
+      "type": "object",
+      "properties": {
+        "objectType": {
+          "enum": ["dataGroup"]
+        },
+        "matchName": {
+          "description": "unique identifier with ASCII, alphanumeric chars and no leading numerals",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "label used for stream",
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/dataGroupChild"
+          }
+        }
+      },
+      "required": ["objectType", "displayName", "children", "matchName"],
+      "additionalProperties": false
+    },
+    "dataDynamicSample": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/dynamicDataValue"
+        },
+        "time": {
+          "description": "If \"useTimecodeB\" is true, the format of the value must be HH:MM:SS:FF else YYYY-MM-DDTHH:MM:SS.ssssTZD. For more details on time format, refer \"dynamicDataInfo\"",
+          "type": "string"
+        }
+      },
+      "required": ["value", "time"],
+      "additionalProperties": false
+    },
+    "dataDynamicSampleSet": {
+      "type": "object",
+      "properties": {
+        "sampleSetID": {
+          "description": "It must match \"sampleSetID\" in associated dataDynamic",
+          "type": "string"
+        },
+        "samples": {
+          "description": "samples must be temporally pre-sorted (earliest first)",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/dataDynamicSample"
+          }
+        }
+      },
+      "required": ["sampleSetID", "samples"],
+      "additionalProperties": false
+    }
+  }
+}
