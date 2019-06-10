@@ -1,0 +1,70 @@
+{
+  "version": "MGJSON2.0.0",
+  "creator": "https://github.com/juanirache",
+  "dynamicSamplesPresentB": true,
+  "dynamicDataInfo": {
+    "useTimecodeB": false,
+    "utcInfo": {
+      "precisionLength": 3,
+      "isGMT": true
+    }
+  },
+  "dataOutline": [
+    {
+      "objectType": "dataStatic",
+      "displayName": "Information",
+      "dataType": {
+        "type": "string",
+        "paddedStringProperties": {
+          "maxLen": 26,
+          "maxDigitsInStrLength": 2,
+          "eventMarkerB": false
+        }
+      },
+      "matchName": "INFO",
+      "value": "This is a test mgJSON file"
+    },
+    {
+      "objectType": "dataDynamic",
+      "displayName": "Accelerometer",
+      "sampleSetID": "00001",
+      "dataType": {
+        "type": "numberString",
+        "numberStringProperties": {
+          "pattern": {
+            "digitsInteger": 5,
+            "digitsDecimal": 0,
+            "isSigned": false
+          },
+          "range": {
+            "occuring": { "min": 16009, "max": 16187 },
+            "legal": { "min": 16000, "max": 17000 }
+          }
+        }
+      },
+      "interpolation": "linear",
+      "hasExpectedFrequecyB": false,
+      "sampleCount": 3,
+      "matchName": "ACCL"
+    }
+  ],
+  "dataDynamicSamples": [
+    {
+      "sampleSetID": "00001",
+      "samples": [
+        {
+          "time": "2017-06-02T12:40:25.390Z",
+          "value": "16009"
+        },
+        {
+          "time": "2017-06-02T12:40:25.437Z",
+          "value": "16167"
+        },
+        {
+          "time": "2017-06-02T12:40:25.453Z",
+          "value": "16187"
+        }
+      ]
+    }
+  ]
+}
