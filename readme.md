@@ -1,6 +1,9 @@
 # MGJSON format example
 
-This a very simple demo file that can be imported in Adobe After Effects to read external dynamic and static data.
+This repository contains demo files that can be imported in Adobe After Effects to read external dynamic and static data.
+
+- demo.mgjson: Minimal working example. A static text and a stream with three samples (keyframes of sorts)
+- gopro.mgjson: Comprehensive file with many data streams. Created with [GoPro Telemetry for JavaScript](https://github.com/JuanIrache/gopro-telemetry)
 
 The underlying JSON schema is available for download under [Adobe's SensorManager SDK Package](https://console.adobe.io/downloads/ae).
 
