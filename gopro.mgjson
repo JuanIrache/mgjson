@@ -51,7 +51,7 @@
              }
           },
           "interpolation": "hold",
-          "hasExpectedFrequencyB": false,
+          "hasExpectedFrequecyB": false,
           "sampleCount": 719,
           "matchName": "streamXdate"
        },
@@ -110,7 +110,7 @@
              }
           },
           "interpolation": "linear",
-          "hasExpectedFrequencyB": false,
+          "hasExpectedFrequecyB": false,
           "sampleCount": 719,
           "matchName": "stream1ACCL"
        },
@@ -169,7 +169,7 @@
              }
           },
           "interpolation": "linear",
-          "hasExpectedFrequencyB": false,
+          "hasExpectedFrequecyB": false,
           "sampleCount": 719,
           "matchName": "stream1GYRO"
        },
@@ -230,7 +230,7 @@
              }
           },
           "interpolation": "linear",
-          "hasExpectedFrequencyB": false,
+          "hasExpectedFrequecyB": false,
           "sampleCount": 718,
           "matchName": "stream1GPS5"
        },
@@ -281,7 +281,7 @@
              }
           },
           "interpolation": "linear",
-          "hasExpectedFrequencyB": false,
+          "hasExpectedFrequecyB": false,
           "sampleCount": 718,
           "matchName": "stream1GPS52"
        },
@@ -310,7 +310,7 @@
              }
           },
           "interpolation": "linear",
-          "hasExpectedFrequencyB": false,
+          "hasExpectedFrequecyB": false,
           "sampleCount": 718,
           "matchName": "stream1ISOE"
        },
@@ -339,7 +339,7 @@
              }
           },
           "interpolation": "linear",
-          "hasExpectedFrequencyB": false,
+          "hasExpectedFrequecyB": false,
           "sampleCount": 718,
           "matchName": "stream1SHUT"
        },
@@ -368,7 +368,7 @@
              }
           },
           "interpolation": "linear",
-          "hasExpectedFrequencyB": false,
+          "hasExpectedFrequecyB": false,
           "sampleCount": 717,
           "matchName": "stream1WBAL"
        },
@@ -425,7 +425,7 @@
              }
           },
           "interpolation": "linear",
-          "hasExpectedFrequencyB": false,
+          "hasExpectedFrequecyB": false,
           "sampleCount": 717,
           "matchName": "stream1WRGB"
        },
@@ -454,7 +454,7 @@
              }
           },
           "interpolation": "linear",
-          "hasExpectedFrequencyB": false,
+          "hasExpectedFrequecyB": false,
           "sampleCount": 717,
           "matchName": "stream1UNIF"
        },
@@ -483,7 +483,7 @@
              }
           },
           "interpolation": "linear",
-          "hasExpectedFrequencyB": false,
+          "hasExpectedFrequecyB": false,
           "sampleCount": 718,
           "matchName": "stream1SROT"
        }
