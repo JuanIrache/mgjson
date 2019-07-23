@@ -11,4 +11,6 @@ Actual files filled with data will have to change a lot depending on the contain
 
 For instructions on how to use the imported data, see [Work with Data-driven animation](https://helpx.adobe.com/after-effects/using/data-driven-animations.html)
 
-Feel free to publish your own samples if you think they can be useful for the community.
+Feel free to submit your own samples if you think they can be useful for the community.
+
+Note that the code has some typos, like _frequecy_ instead of _frequency_. These are necessary for the files to load in some After Effects versions.
