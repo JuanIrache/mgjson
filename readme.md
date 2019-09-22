@@ -15,3 +15,9 @@ For instructions on how to use the imported data, see [Work with Data-driven ani
 Feel free to submit your own samples if you think they can be useful for the community.
 
 Note that the code has some typos, like _frequecy_ instead of _frequency_. These are necessary for the files to load in some After Effects versions.
+
+## Videos made with mgJSON
+
+- [mgJSON playlist on YouTube](https://www.youtube.com/watch?v=Qo6NR71gbU4&list=PLgoeWSWqXedI7FbZccAEudt2_t8qPX0Px)
+
+If you create something with mgJSON, let me know and I'll add it to the list.
