@@ -3,7 +3,7 @@
 This repository contains demo files that can be imported in Adobe After Effects to read external dynamic and static data.
 
 - **demo**.mgjson: Minimal working example. A static text and a stream with three samples (keyframes of sorts)
-- **gopro**.mgjson: Comprehensive file with many data streams. Created with [GoPro Telemetry](https://tailorandwayne.com/gopro-telemetry-extractor/)
+- **gopro**.mgjson: Comprehensive file with many data streams. Created with [GoPro Telemetry](https://goprotelemetryextractor.com/free)
 
 The underlying JSON schema is available for download under [Adobe's SensorManager SDK Package](https://console.adobe.io/downloads/ae).
 
