@@ -13,7 +13,7 @@ For a sample project showing how to use mgJSON files download the [free GoPro Te
 
 ## Videos made with mgJSON
 
-- [mgJSON playlist on YouTube](https://www.youtube.com/watch?v=Qo6NR71gbU4&list=PLgoeWSWqXedI7FbZccAEudt2_t8qPX0Px)
+- [mgJSON playlist on YouTube](https://youtu.be/TAdxsTv4hPU?list=PLgoeWSWqXedI7FbZccAEudt2_t8qPX0Px)
 
 If you create something with mgJSON, let me know and I'll add it to the list.
 
