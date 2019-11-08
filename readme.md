@@ -10,7 +10,7 @@ The underlying JSON schema is available for download under [Adobe's SensorManage
 
 ## Sample projects
 
-For a sample project showing how to use mgJSON files download the [free GoPro Telemetry Lite template](https://goprotelemetryextractor.com/#ae).
+For a sample project showing how to use mgJSON files download the [free GoPro Telemetry Lite template](https://goprotelemetryextractor.com#ae).
 
 ## Videos made with mgJSON
 
@@ -20,7 +20,7 @@ If you create something with mgJSON, let me know and I'll add it to the list.
 
 ## Notes
 
-Actual files filled with data will have to change a lot depending on the contained data, but since online documentation is very scarce, I thought this demo was worth posting.
+Real world files filled with data from different sources can have different structures and data types than the examples here, but since online documentation is very scarce, I thought these demos were worth posting.
 
 For instructions on how to use the imported data, see [Work with Data-driven animation](https://helpx.adobe.com/after-effects/using/data-driven-animations.html)
 
