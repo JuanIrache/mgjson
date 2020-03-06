@@ -10,7 +10,7 @@ The underlying JSON schema is available for download under [Adobe's SensorManage
 
 ## Sample projects
 
-You can find sample projects that use mgJSON files on the [GoPro Telemetry Extractor page](https://goprotelemetryextractor.com#ae). Look for the Lite templates.
+You can find sample projects that use mgJSON files on the [GoPro Telemetry Extractor page](https://goprotelemetryextractor.com). Look for the **Lite templates**.
 
 ## Videos made with mgJSON
 
