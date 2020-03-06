@@ -25,6 +25,14 @@ These apps can output mgJSON files:
 - [GoPro Telemetry Extractor](https://goprotelemetryextractor.com)
 - [DJI Telemetry Overlay](https://djitelemetryoverlay.com)
 
+## Code implementations
+
+These repositories convert other formats to mgJSON:
+
+- [tomgjson](https://github.com/JuanIrache/tomgjson) (Go)
+- [gopro-telemetry](https://github.com/JuanIrache/gopro-telemetry/blob/master/code/toMgjson.js) (JavaScript)
+- [DJI_SRT_Parser](https://github.com/JuanIrache/DJI_SRT_Parser/blob/master/modules/toMGJSON.js) (JavaScript)
+
 ## Notes
 
 Real world files filled with data from different sources can have different structures and data types than the examples here, but since online documentation is very scarce, I thought these demos were worth posting.
