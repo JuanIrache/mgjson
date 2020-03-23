@@ -10,7 +10,9 @@ The underlying JSON schema is available for download under [Adobe's SensorManage
 
 ## Software that supports mgJSON
 
-Convert other file formats to mgJSON (CSV, GPX...): [To mgJSON](https://goprotelemetryextractor.com/csv-gpx-to-mgjson/)
+Convert other file formats to mgJSON (CSV, GPX...):
+
+- [To mgJSON](https://goprotelemetryextractor.com/csv-gpx-to-mgjson/)
 
 These apps can output mgJSON files:
 
