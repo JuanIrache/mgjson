@@ -1,6 +1,8 @@
-# MGJSON format example
+# MGJSON (Motion Graphics JSON)
 
-This repository contains demo files that can be imported in Adobe After Effects to read external dynamic and static data.
+This repository contains documentation on the mgJSON format and demo files that can be imported in Adobe After Effects to read external dynamic and static data.
+
+## Example files
 
 - **demo**.mgjson: Minimal working example. A static text and a stream with three samples (keyframes of sorts)
 - **gopro**.mgjson: Comprehensive file with many data streams. Created with [GoPro Telemetry](https://goprotelemetryextractor.com/free)
