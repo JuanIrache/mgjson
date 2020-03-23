@@ -8,6 +8,15 @@ This repository contains demo files that can be imported in Adobe After Effects 
 
 The underlying JSON schema is available for download under [Adobe's SensorManager SDK Package](https://console.adobe.io/downloads/ae).
 
+## Software that supports mgJSON
+
+Convert other file formats to mgJSON (CSV, GPX...): [To mgJSON](https://goprotelemetryextractor.com/csv-gpx-to-mgjson/)
+
+These apps can output mgJSON files:
+
+- [GoPro Telemetry Extractor](https://goprotelemetryextractor.com)
+- [DJI Telemetry Overlay](https://djitelemetryoverlay.com)
+
 ## Sample projects
 
 You can find sample projects that use mgJSON files on the [GoPro Telemetry Extractor page](https://goprotelemetryextractor.com). Look for the **Lite templates**.
@@ -17,13 +26,6 @@ You can find sample projects that use mgJSON files on the [GoPro Telemetry Extra
 - [mgJSON playlist on YouTube](https://youtu.be/TAdxsTv4hPU?list=PLgoeWSWqXedI7FbZccAEudt2_t8qPX0Px)
 
 If you create something with mgJSON, let me know and I'll add it to the list.
-
-## Software that supports mgJSON
-
-These apps can output mgJSON files:
-
-- [GoPro Telemetry Extractor](https://goprotelemetryextractor.com)
-- [DJI Telemetry Overlay](https://djitelemetryoverlay.com)
 
 ## Code implementations
 
