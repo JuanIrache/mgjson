@@ -5,6 +5,8 @@ This repository contains demo files that can be imported in Adobe After Effects 
 - **demo**.mgjson: Minimal working example. A static text and a stream with three samples (keyframes of sorts)
 - **gopro**.mgjson: Comprehensive file with many data streams. Created with [GoPro Telemetry](https://goprotelemetryextractor.com/free)
 - **dji**.mgjson: File with flight data from a Mavic Pro drone. Created with [DJI SRT Viewer](https://djitelemetryoverlay.com/srt-viewer)
+- **from-csv**.mgjson: File with numeric data originally in CSV format. Created with [To mgJSON](https://goprotelemetryextractor.com/csv-gpx-to-mgjson/)
+- **from-gpx**.mgjson: File with gps path data originally in GPX format. Created with [To mgJSON](https://goprotelemetryextractor.com/csv-gpx-to-mgjson/)
 
 The underlying JSON schema is available for download under [Adobe's SensorManager SDK Package](https://console.adobe.io/downloads/ae).
 
