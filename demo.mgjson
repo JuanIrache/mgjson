@@ -63,8 +63,14 @@
             "isSigned": false
           },
           "range": {
-            "occuring": { "min": 16009, "max": 16187 },
-            "legal": { "min": 16000, "max": 17000 }
+            "occuring": {
+              "min": 16009,
+              "max": 16187
+            },
+            "legal": {
+              "min": 16000,
+              "max": 17000
+            }
           }
         }
       },
