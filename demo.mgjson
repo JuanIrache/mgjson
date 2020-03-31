@@ -25,6 +25,32 @@
       "value": "This is a test mgJSON file"
     },
     {
+      "objectType": "dataStatic",
+      "displayName": "Static number",
+      "dataType": {
+        "type": "number",
+        "numberStringProperties": {
+          "pattern": {
+            "isSigned": true,
+            "digitsInteger": 2,
+            "digitsDecimal": 0
+          },
+          "range": {
+            "occuring": {
+              "min": 50,
+              "max": 50
+            },
+            "legal": {
+              "min": -2147483648,
+              "max": 2147483648
+            }
+          }
+        }
+      },
+      "matchName": "staticnum",
+      "value": 50
+    },
+    {
       "objectType": "dataDynamic",
       "displayName": "Accelerometer",
       "sampleSetID": "00001",
