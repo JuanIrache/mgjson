@@ -33,6 +33,10 @@ You can find sample projects that use mgJSON files on the [GoPro Telemetry Extra
 
 If you create something with mgJSON, let me know and I'll add it to the list.
 
+## Tutorial
+
+- HKChad created a [tutorial explaining the basics of displaying mgJSON data in After Effects](https://youtu.be/btY0NNFDOUs). Much more complex things are possible, but it's a great way to get started.
+
 ## Code implementations
 
 These repositories convert other formats to mgJSON:
